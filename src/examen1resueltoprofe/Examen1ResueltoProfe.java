@@ -7,8 +7,9 @@ public class Examen1ResueltoProfe {
 
     public static void main(String[] args) {
       DatosPersonales Datos[] = new DatosPersonales[100];
-      int Opc=0, contUs=0; //contUs me permite saber cuántos usuarios hay
+      int Opc=0, contUs=0, bandera=0; //contUs me permite saber cuántos usuarios hay
       Scanner lector = new Scanner(System.in);
+      String buscar=null;
       
       do{
       
@@ -41,6 +42,26 @@ public class Examen1ResueltoProfe {
                   contUs++;
                   break;
               case 2:
+                  System.out.print("Digite el nombre a actualizar: ");
+                  buscar = lector.next();
+                  for (int i=0; i<contUs; i++){
+                  
+                      if (buscar.equals(Datos[i].getNombre())){
+                        bandera = 1;  
+                        System.out.print("Digite la dirección: ");
+                        Datos[i].setDireccion(lector.next());
+                        System.out.print("Digite el teléfono: ");
+                        Datos[i].setTelefono(lector.next());
+                        System.out.print("Digite el área: ");
+                        Datos[i].setAreas(lector.next());
+                                                  
+                      }
+                       if(bandera==0)   
+                           System.out.println("\nUsuario no encontrado");
+                       else
+                           bandera=0;
+                  }
+                  
                   
                   break;
               case 3:
